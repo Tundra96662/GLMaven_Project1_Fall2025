@@ -80,11 +80,21 @@ public abstract class GenericList<T> {
 		return null;
 	}
 
-	public int getLength();
-	public void setLength();
+	public int getLength(){
+		return length;
+	}
 
-	public Node<T> getHead();
-	public void setHead();
+	public void setLength(int newLength){
+		length = newLength;
+	}
+
+	public Node<T> getHead(){
+		return head;
+	}
+
+	public void setHead(Node<T> newHead){
+		head = newHead;
+	}
 
 	public Iterator<T> descendingIterator();
 
