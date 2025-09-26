@@ -61,7 +61,7 @@ public abstract class GenericList<T> {
 	}
 
 
-	public T set(int index, T element){ //I mightve fucked this one up
+	public T set(int index, T element){ //I mightve messed this up
 				
 		Node<T> currNode = head;
 		int i = 0;
@@ -96,8 +96,43 @@ public abstract class GenericList<T> {
 		head = newHead;
 	}
 
-	public Iterator<T> descendingIterator();
+	public Iterator<T> iterator(){
+                return new Iterator<T>(){
+                        Node<T> curr = head;
 
+                        @Ovverride
+                        public boolean hasNext(){
+                                return (curr.next != null)? true : false ;
+                        }
 
+                        @Override
+                        public Node<T> next(){
+                                curr = curr.next;
+                                return curr.data;
+                        }
 
+                }
+        }
+
+        public Iterator<T> descendingIterator(){
+                ArrayList<T> list = dumpList();
+                return new Iterator<T>(){
+                                int i = list.size() - 1;
+
+                                @Override
+                                public boolean hasNext(){
+                                        return (i-1 >= 0)? true : false;
+                                }
+
+                                @Override
+                                public T next(){
+                                        i--;
+                                        if (i >= 0)
+                                                return get(i);
+
+                                        return null;
+
+                                }
+                }
+        }
 }
