@@ -1,3 +1,5 @@
+
+
 public class GenericQueue<T> extends GenericList<T>{
 	private Node<T> tail;
 
@@ -47,13 +49,13 @@ public class GenericQueue<T> extends GenericList<T>{
 
     }
 
-    @Overide
+    @Override
 	public T delete(){
         if (getHead() == null) {
             return null;
         }
         //Remove current head node
-        T deletedData = getHead.data;
+        T deletedData = getHead().data;
         setHead(getHead().next);
         setLength(getLength() -1);
 
