@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public abstract class GenericList<T> {
 	
@@ -97,42 +98,38 @@ public abstract class GenericList<T> {
 	}
 
 	public Iterator<T> iterator(){
-                return new Iterator<T>(){
-                        Node<T> curr = head;
+  	return new Iterator<T>(){
+    	Node<T> curr = head;
 
-                        @Ovverride
-                        public boolean hasNext(){
-                                return (curr.next != null)? true : false ;
-                        }
+      public boolean hasNext(){
+        return (curr.next != null)? true : false ;
+      }
 
-                        @Override
-                        public Node<T> next(){
-                                curr = curr.next;
-                                return curr.data;
-                        }
+      public T next(){
+        curr = curr.next;
+      	return curr.data;
+      }
+    };
+  }
 
-                }
-        }
+	public Iterator<T> descendingIterator(){
+  	ArrayList<T> list = dumpList();
+    return new Iterator<T>() {
+		int i = list.size() - 1;
 
-        public Iterator<T> descendingIterator(){
-                ArrayList<T> list = dumpList();
-                return new Iterator<T>(){
-                                int i = list.size() - 1;
+		@Override
+		public boolean hasNext() {
+			return (i - 1 >= 0) ? true : false;
+		}
 
-                                @Override
-                                public boolean hasNext(){
-                                        return (i-1 >= 0)? true : false;
-                                }
+		@Override
+		public T next() {
+			i--;
+			if (i >= 0) return get(i);
 
-                                @Override
-                                public T next(){
-                                        i--;
-                                        if (i >= 0)
-                                                return get(i);
+			return null;
 
-                                        return null;
-
-                                }
-                }
-        }
+		}
+	};
+  }
 }
