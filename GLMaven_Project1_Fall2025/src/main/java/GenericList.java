@@ -98,38 +98,48 @@ public abstract class GenericList<T> {
 	}
 
 	public Iterator<T> iterator(){
-  	return new Iterator<T>(){
-    	Node<T> curr = head;
 
-      public boolean hasNext(){
-        return (curr.next != null)? true : false ;
-      }
+		return new GLLIterator<>(head);
+		
+		
+		//Old code, prior to implementing GLLIterator 
+		/*
+  		return new Iterator<T>(){
+    			Node<T> curr = head;
 
-      public T next(){
-        curr = curr.next;
-      	return curr.data;
-      }
-    };
-  }
+	      		public boolean hasNext(){
+        			return (curr.next != null)? true : false ;
+      			}
+
+      			public T next(){
+			        curr = curr.next;
+	      			return curr.data;
+      			}
+    		};*/
+  	}
 
 	public Iterator<T> descendingIterator(){
-  	ArrayList<T> list = dumpList();
-    return new Iterator<T>() {
-		int i = list.size() - 1;
 
-		@Override
-		public boolean hasNext() {
-			return (i - 1 >= 0) ? true : false;
-		}
+		return new ReverseGLLIterator<>(this);
+  		
+		//Old code prior to adding ReverseGLLIterator
+		/*ArrayList<T> list = dumpList();
+    		return new Iterator<T>() {
+			int i = list.size() - 1;
 
-		@Override
-		public T next() {
-			i--;
-			if (i >= 0) return get(i);
+			@Override
+			public boolean hasNext() {
+				return (i - 1 >= 0) ? true : false;
+			}
 
-			return null;
+			@Override
+			public T next() {
+				i--;
+				if (i >= 0) return get(i);
 
-		}
-	};
-  }
+				return null;
+
+			}
+		};*/
+	}
 }
