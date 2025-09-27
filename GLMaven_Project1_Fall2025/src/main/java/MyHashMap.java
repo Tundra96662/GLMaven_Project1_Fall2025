@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 
 public class MyHashMap <T> implements Iterable<T>{
-    private ArrayList<<GenericQueue<T>> map;
+    private ArrayList<GenericQueue<T>> map;
     private int size;
 
     public MyHashMap(String key, T value){
@@ -17,7 +18,7 @@ public class MyHashMap <T> implements Iterable<T>{
 
     public void put(String key, T value){
         int hashCode = key.hashCode();
-        int hashValue = hasCode & 9;
+        int hashValue = hashCode & 9;
 
         GenericQueue<T> queue = map.get(hashValue);
 
@@ -80,7 +81,7 @@ public class MyHashMap <T> implements Iterable<T>{
         return size;
     }
 
-    //is map emty
+    //is map empty
     public boolean isEmpty() {
         return size == 0;
     }
@@ -131,18 +132,11 @@ public class MyHashMap <T> implements Iterable<T>{
             public boolean hasNext() {
                 return currNode != null;
             }
-//            @Override
-//            public T next() {
-//                if (!hasNext()) {
-//                    return currNode != null;
-//                }
-//                return data;
-//            }
+
             @Override
             public T next() {
                 if (!hasNext()) {
-                    //throw new NoSuchElementException();
-                    return currNode != null;
+                    throw new NoSuchElementException();
                 }
                 T data = currNode.data;
                 findNextNode();
