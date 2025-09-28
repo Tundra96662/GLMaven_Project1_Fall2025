@@ -138,6 +138,23 @@ class GenericQueueTests {
 		assertEquals(null, queue.getHead());
 	}
 
+	@Test
+	void forEachITests(){
+		queue.add(2);
+		queue.add(3);
+		queue.add(4);
+		queue.add(5);
+		queue.add(6);
+		queue.add(7);
+		
+		int i = 0;
+		for(Integer num : queue){
+			System.out.println(num);
+			assertEquals(num, queue.get(i));
+
+			i++;
+		}
+	}
 
 	@Test
 	void iteratorTests(){
@@ -178,8 +195,6 @@ class GenericQueueTests {
 		assertEquals(false, iterator.hasNext());
 	}
 
-
-	
 	//BASE FUNCTION
 	@Test
 	void dumpListTests(){
