@@ -9,32 +9,16 @@ public class GLLIterator<E> implements Iterator<E> {
 	}
 	
 	public boolean hasNext(){
+		if (curr == null) return false;
        		return (curr.next != null)? true : false ;
       	}
 
       	public E next(){
+		if (curr == null)
+			return null;
+
 	        E CURRENTDATA = curr.data;
 		curr = curr.next;
 		return CURRENTDATA;
       	}
-
-
-
-
-
-	//The code below is pointless I believe, I just need to copy and paste from general list I think.
-	/*
-	GenericList<E>.Node<E> curNode;
-	@Override
-	public boolean hasNext(){
-		return false;
-	}
-
-	@Override
-	public E next(){
-
-		return null;
-	}
-	*/
-
 }
