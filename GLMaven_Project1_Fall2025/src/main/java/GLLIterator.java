@@ -9,8 +9,7 @@ public class GLLIterator<E> implements Iterator<E> {
 	}
 	
 	public boolean hasNext(){
-		if (curr == null) return false;
-       		return (curr.next != null)? true : false ;
+		return curr != null;
       	}
 
       	public E next(){
