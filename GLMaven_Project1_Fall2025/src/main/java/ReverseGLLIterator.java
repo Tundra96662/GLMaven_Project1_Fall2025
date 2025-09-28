@@ -3,11 +3,11 @@ import java.util.ArrayList;
 public class ReverseGLLIterator<E> implements Iterator<E> {
 	//Carbon copy to GLLIterator but reverse. A note for both
 	//is that it calls for next to be I (This is only mentioned
-//for GLLIterator), however the code doesnt compile if so as
+	//for GLLIterator), however the code doesnt compile if so as
 	//I was never defined anywhere in the code, So im replacing it
 	//with E.
 	
-	//I just realized that using the dumpedList was stupid as I could
+	//I just realized that using the dumpedList was a really dumb solution as I could
 	//just get the class instead. Good for when the linked list gets
 	//altered in any way.
 	
@@ -17,7 +17,6 @@ public class ReverseGLLIterator<E> implements Iterator<E> {
 
 	public ReverseGLLIterator(GenericList<E> genList) {
 		list = genList;
-
 
 		i = list.getLength() - 1; //Set to tail index
 	}

@@ -53,6 +53,7 @@ public abstract class GenericList<T> {
 		Node<T> currNode = head;
 		int i = 0;
 		while (currNode != null){
+			//Just searches through the whole list, incrementing i till both i and index are the same number
 			if (i == index) return currNode.data;
 			i++;
 			currNode = currNode.next;
@@ -62,11 +63,10 @@ public abstract class GenericList<T> {
 	}
 
 
-	public T set(int index, T element){ //I mightve messed this up
-				
+	public T set(int index, T element){ 				
 		Node<T> currNode = head;
 		int i = 0;
-		while (currNode != null){
+		while (currNode != null){ //Same code as get but it sets the data of that node.
 			if (i == index) { 
 				
 				T returnData = currNode.data;
@@ -100,46 +100,10 @@ public abstract class GenericList<T> {
 	public Iterator<T> iterator(){
 
 		return new GLLIterator<>(head);
-		
-		
-		//Old code, prior to implementing GLLIterator 
-		/*
-  		return new Iterator<T>(){
-    			Node<T> curr = head;
-
-	      		public boolean hasNext(){
-        			return (curr.next != null)? true : false ;
-      			}
-
-      			public T next(){
-			        curr = curr.next;
-	      			return curr.data;
-      			}
-    		};*/
   	}
 
 	public Iterator<T> descendingIterator(){
 
 		return new ReverseGLLIterator<>(this);
-  		
-		//Old code prior to adding ReverseGLLIterator
-		/*ArrayList<T> list = dumpList();
-    		return new Iterator<T>() {
-			int i = list.size() - 1;
-
-			@Override
-			public boolean hasNext() {
-				return (i - 1 >= 0) ? true : false;
-			}
-
-			@Override
-			public T next() {
-				i--;
-				if (i >= 0) return get(i);
-
-				return null;
-
-			}
-		};*/
 	}
 }
