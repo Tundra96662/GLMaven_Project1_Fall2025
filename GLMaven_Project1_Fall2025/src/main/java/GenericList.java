@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Iterator;
-
-public abstract class GenericList<T> {
+public abstract class GenericList<T> implements Iterable<T>{
 	
 	private Node<T> head;
 	private int length;
