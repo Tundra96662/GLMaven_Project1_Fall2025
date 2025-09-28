@@ -169,7 +169,7 @@ class GenericQueueTests {
 		assertEquals(1, iterator.next());
 		assertEquals(2, iterator.next());
 		
-		assertEquals(false, iterator.hasNext());
+		assertEquals(true, iterator.hasNext());
 		assertEquals(3, iterator.next());
 
 		assertEquals(null, iterator.next());
